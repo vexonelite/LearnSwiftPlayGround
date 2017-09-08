@@ -38,6 +38,7 @@ func printMultipleOf(_ multiplier: Int, and value: Int) {
 //Print multiple of 4 and 2
 printMultipleOf(4, and: 2)
 
+// If you want to have no external name at all, then you can employ the underscore "_"
 func printMultipleOf(_ multiplier: Int, _ value: Int) {
     print("4. \(multiplier) * \(value) = \(multiplier * value)")
 }

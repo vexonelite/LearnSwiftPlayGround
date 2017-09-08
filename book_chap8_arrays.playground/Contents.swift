@@ -180,3 +180,57 @@ let sortedPlayers = players.sorted()
 print("players is \(players)")
 print("sortedPlayers is \(sortedPlayers)")
 
+
+// [4. Iterating through an array]
+// This code goes over all the elements of players, from index 0 up to players.count - 1 and prints their values.
+for player in players {
+    print(player)
+}
+
+// If you also need the index of each element, you can iterate over the return value of the array’s enumerated() method, which returns tuples with the index and value of each element in the array.
+for (index, player) in players.enumerated() {
+    print("\(index + 1). \(player)")
+}
+
+
+// external name "in" for paramter "array" and its type is "[Int]
+func sumOfAllItems(in array: [Int]) -> Int {
+    var sum = 0
+    for number in array {
+        sum += number
+    }
+    return sum
+}
+let scores = [2, 2, 8, 6, 1, 2, 1]
+print(sumOfAllItems(in: scores))
+
+
+
+// [5. Variadic Parameters]
+// A variadic parameter is used to pass an unknown number of parameters to a function. You use "three dots after the type to mark a parameter as variadic".
+func sum(of numbers: Int...) -> Int {
+    var total = 0
+    for number in numbers {
+        total += number
+    }
+    return total
+}
+print(sum(of: 1, 6, 2, -3))
+
+
+
+// [6. Running time for array operations]
+// Arrays are stored as a continuous block in memory. That means if you have ten elements in an array, the ten values are all stored one next to the other. With that in mind, here’s what the performance of various array operations costs:
+// Accessing elements: The cost of fetching an element is O(1). Since all the values are sequential, it’s easy to do random access and fetch a value at a particular index; all the compiler needs to know is where the array starts and what index you want to fetch.
+// Inserting elements: The complexity of adding an element depends on the position in which you add the new element:
+//  • If you add to the beginning of the array, Swift can do it in O(1).
+//  • If you add to the middle of the array, all values from that index on need to be shifted over. Doing so will require N/2 operations, therefore the running time is O(N).
+//  • If you add to the end of the array and there’s room, it will take O(1). If there isn’t room, Swift will need to make space somewhere else and copy the entire array over before adding the new element, which will take O(N). The average case is O(1) though, because arrays are not full most of the time.
+// Deleting elements: Deleting an element leaves a gap where the removed element was. As was mentioned earlier, all elements in the array have to be sequential so this gap needs to be closed by shifting elements forward.
+//  The complexity is similar to inserting elements: If you’re removing an element from the beginning or the end, it’s an O(1) operation. If you’re removing from the middle, the complexity is O(N).
+//  Searching for an Element: If the element you’re searching for is the first element in the array, then the search will end after a single operation. If the element doesn’t exist, you need to perform N operations until you realize that the element is not found. On average, searching for an element will take N/2 operations, therefore searching has a complexity of O(N).
+
+
+
+
+
